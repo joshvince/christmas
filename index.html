@@ -10,14 +10,24 @@
 <body class="container mx-auto max-w-screen-md bg-gradient-to-r from-green-900 to-lime-900 text-neutral-100">
   <div class="px-6 py-6 max-w-screen flex flex-col justify-center items-center text-center">
 
-    <h1 class="text-4xl font-black text-red-400">The soup tin...</h1>
-    <h2 class="text-xl font-bold mt-8 mb-2 text-center">If that person didn't already find it...</h2>
-    <h2 class="text-xl font-bold mb-8 text-center">It's yours.</h2>
+    <h1 class="text-4xl font-black text-red-400">You've almost won your prize!</h1>
+    <h2 class="text-6xl font-bold mt-8 mb-2 text-center">🥫</h2>
+    <h2 class="text-xl font-bold mt-8 mb-2 text-center">Swap the soup tin for one of your prizes. <br/> <br/>When you have it, click the button below</h2>
+    <div id="btn" class="mb-4 mt-8 rounded-md border border-1 border-neutral-100 p-4 text-lg font-bold">I have the soup tin</div>
 
-    <p class="">Merry Christmas</p>
+    <div id="answer" class="flex flex-col justify-center items-center text-center hidden">
+      <h2 class="text-lg mt-6 mb-8 text-center">Check under the wrapper <br/> <br/> 🎅 Merry Christmas</h2>
+    </div>
   </div>
   <script>
+    let btn = document.getElementById("btn")
+    let answer = document.getElementById("answer")
 
+    btn.onclick = () => {
+      answer.classList.remove("hidden")
+    }
+  </script>
+  <script>
     'use strict'
 
     // Class for creating snowflakes
