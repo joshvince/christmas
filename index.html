@@ -68,9 +68,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      unlockOldNumbers()
-      unlockNewNumber()
-      checkForUnlock()
+      const params = new URLSearchParams(document.location.search);
+      const resetParam = params.get('reset')
+      if (resetParam) {
+        localStorage.clear()
+      } else {
+        unlockOldNumbers()
+        unlockNewNumber()
+        checkForUnlock()
+      }
     })
   </script>
   <script>
