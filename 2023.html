@@ -4,74 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>The most annoying present game present ever 2024 edition</title>
+  <title>The most annoying present game present ever</title>
 
 </head>
 <body class="container mx-auto max-w-screen-md bg-gradient-to-r from-green-900 to-lime-900 text-neutral-100">
-  <div class="p-6 max-w-screen flex flex-col justify-center items-center text-center">
-    <h1 class="text-4xl font-black text-red-400 mt-8">Congratulations</h1>
-    <h2 class="text-6xl font-bold mt-8 mb-2 text-center">💼</h2>
-    <h2 id="body-text" class="text-xl font-bold mt-8 mb-2 text-center">You are one step closer to cracking the code</h2>
-    <div class="mt-12 w-full flex gap-8 justify-center">
-      <div class="border border-neutral-100 rounded-sm h-24 w-12 text-5xl font-black flex flex-col items-center justify-center"><div id="number-left" class="opacity-0 duration-1000 transition-all">3</div></div>
-      <div class="border border-neutral-100 rounded-sm h-24 w-12 text-5xl font-black flex flex-col items-center justify-center"><div id="number-center" class="opacity-0 duration-1000 transition-all">9</div></div>
-      <div class="border border-neutral-100 rounded-sm h-24 w-12 text-5xl font-black flex flex-col items-center justify-center"><div id="number-right" class="opacity-0 duration-1000 transition-all">3</div></div>
+  <div class="px-6 py-6 max-w-screen flex flex-col justify-center items-center text-center">
+
+    <h1 class="text-4xl font-black text-red-400">You've almost won your prize!</h1>
+    <h2 class="text-6xl font-bold mt-8 mb-2 text-center">🥫</h2>
+    <h2 class="text-xl font-bold mt-8 mb-2 text-center">Swap the soup tin for one of your prizes. <br/> <br/>When you have it, click the button below</h2>
+    <div id="btn" class="mb-4 mt-8 rounded-md border border-1 border-neutral-100 p-4 text-lg font-bold">I have the soup tin</div>
+
+    <div id="answer" class="flex flex-col justify-center items-center text-center hidden">
+      <h2 class="text-lg mt-6 mb-8 text-center">Check under the wrapper <br/> <br/> 🎅 Merry Christmas</h2>
     </div>
-    <img id="briefcase-wanker" class="rounded-md mt-8 opacity-0 transition-all duration-1000" src="briefcasewanker.png"/>
   </div>
   <script>
-    const paramsToPositions = {
-      'korma': 'number-left',
-      'bhuna': 'number-center',
-      'pilau': 'number-right'
+    let btn = document.getElementById("btn")
+    let answer = document.getElementById("answer")
+
+    btn.onclick = () => {
+      answer.classList.remove("hidden")
     }
-
-    function revealNumber(position) {
-      const domNode = document.querySelector(`#${position}`)
-
-      setTimeout(() => {
-        domNode.classList.remove('opacity-0')
-      }, 200);
-    }
-
-    function fetchFromLocalStorage () {
-      return JSON.parse(localStorage.getItem('briefcase-wanker')) || []
-    }
-
-    function unlockNewNumber () {
-      const params = new URLSearchParams(document.location.search);
-      const positionParam = params.get('position')
-
-      if (positionParam) {
-        const position = paramsToPositions[positionParam]
-        const currentlyStored = fetchFromLocalStorage()
-
-        const newStorage = new Set([position, ...currentlyStored])
-        localStorage.setItem('briefcase-wanker', JSON.stringify([...newStorage]))
-
-        revealNumber(position)
-      }
-    }
-
-    function unlockOldNumbers () {
-      const currentStorage = fetchFromLocalStorage()
-      currentStorage.forEach(position => {
-        revealNumber(position)
-      })
-    }
-
-    function checkForUnlock () {
-      if (fetchFromLocalStorage().length == 3) {
-        document.querySelector('#body-text').innerText = 'You have cracked the code! The prize is shared between whoever got a number'
-        document.querySelector('#briefcase-wanker').classList.remove('opacity-0')
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      unlockOldNumbers()
-      unlockNewNumber()
-      checkForUnlock()
-    })
   </script>
   <script>
     'use strict'

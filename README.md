@@ -1,1 +1,3 @@
-This was part of a treasure hunt I did at Christmas. It was stupid but fun to do, especially as I was doing DNS on christmas morning like some sort of demented scrooge.
+This repo holds random treasure hunts I did for my family over a couple of christmases.
+
+ They are generally stupid but fun to do, especially as one year I was doing DNS on christmas morning like some sort of demented scrooge.
